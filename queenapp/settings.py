@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'queenapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': 'queengallery',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'queengallery',
+        'USER': 'wecode',
         'PASSWORD':'wito',
     }
 }
@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Kigali'
 
 USE_I18N = True
 
