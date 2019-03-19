@@ -15,18 +15,16 @@ class Location(models.Model):
 
 
 class Images(models.Model):
-    first_name = models.CharField(max_length =30)
-    last_name = models.CharField(max_length =30)
-    post = models.TextField()
-    description = models.CharField(max_length =60)
-    pub_date = models.DateTimeField(auto_now_add=True)
-    images_category = models.ForeignKey(Category)
+    images_name = models.CharField(max_length =60)
+    post = models.ImageField(upload_to='galleryToday/')
+    images_description = models.CharField(max_length =60)
+    images_category = models.ForeignKey(Category,null=True)
     images_location = models.ForeignKey(Location)
 
     def __str__(self):
-      return self.first_name
+      return self.images_name
 
     class Meta:
-        ordering = ['first_name']
+        ordering = ['images_name']
 
 
