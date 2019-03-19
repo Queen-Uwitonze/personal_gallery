@@ -13,6 +13,18 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="{% url 'galleryToday' %}">Gallery App</a>
       </div>
+
+      <!-- Adding a search form  -->
+      <div class="col-sm-4 col-md-4 navbar-right">
+
+        <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %} ">
+          <div class="input-group">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="category" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </div>
+        </form>
+      </div>
+      <!-- search form end -->
     </div>
   </nav>
 </body>

@@ -12,17 +12,14 @@
     <div class="col-md-2"></div>
     <!-- displaying News articles -->
     <div class="col-xs-6 col-sm-6 col-md-8 col-lg-6">
-      <h2 class="text-center"> {{ image.images_name }} </h2>
-      <img src="{{ image.post.url }}" class="text-center" alt="flowers">
-      <p class="text-center">{{ image.images_description }}</p>
-      <p class="text-center">{{ image.images_category }}</p>
-      <p class="text-center">{{ image.images_location }}</p>
-      <!-- </div> -->
-      <div class="col-md-2"></div>
+      <h2 class="column"> {{ image.images_name }} </h2>
+      <img src="{{image.post.url}}" class="column" alt="Image">
+      <p class="column">{{ image.images_description }}</p>
+      <p class="column">{{ image.images_category }}</p>
+      <p class="column">{{ image.images_location }}</p>
     </div>
-
-
   </div>
+
   {% empty %}
   <div class="row">
     <h2 class="text-center">There No News Items</h2>

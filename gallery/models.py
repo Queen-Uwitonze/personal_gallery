@@ -15,12 +15,12 @@ class Location(models.Model):
 
 
 class Images(models.Model):
-    post =models.ImageField(upload_to='gallery/', null=True, blank=True)
+    post =models.ImageField(upload_to='gallery/')
     images_name = models.CharField(max_length =60)
     images_description = models.CharField(max_length =60)
     images_category = models.ForeignKey(Category,null=True)
     images_location = models.ForeignKey(Location)
-
+    
     def __str__(self):
       return self.images_name
 
@@ -34,6 +34,11 @@ class Images(models.Model):
             return post
         except DoesNotExist:
             return Images.objects.get(id=1) 
+    
+    @classmethod
+    def search_by_images_name(cls,search_term):
+        gallery = cls.objects.filter(images_name__icontains=search_term)
+        return gallery
 
     class Meta:
         ordering = ['images_name']
