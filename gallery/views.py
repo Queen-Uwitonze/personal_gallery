@@ -56,3 +56,9 @@ def search_results(request):
         return render(request, 'all_gallery/search.html',{"message":message})
 
    
+def get_images(request,post_id):
+    try:
+      post = Images.objects.get(id = post.id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"all_gallery/single_image.html", {"post":post})

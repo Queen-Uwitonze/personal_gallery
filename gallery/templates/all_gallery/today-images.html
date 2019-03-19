@@ -1,31 +1,24 @@
-{%extends 'all_gallery/base.html'%}
-
+{% extends 'all_gallery/base.html' %}
 {% block content %}
-{{ block.super}}
-
-<div class="container">
-
-  <!-- Looping through news   -->
-  {% for image in gallery %}
-
+{{block.super}}
+<div class="container-fluid">
+  <h1 style="text-align:center; color:darkolivegreen; font-family: 'Margarine', cursive; height: 50px; border: 1px solid white; margin-left: 600px; margin-right: 600px;">Welcome
+    to my photo gallery</h1>
+  <hr>
+  <br>
   <div class="row">
-    <div class="col-md-2"></div>
-    <!-- displaying News articles -->
-    <div class="col-xs-6 col-sm-6 col-md-8 col-lg-6">
-      <h2 class="column"> {{ image.images_name }} </h2>
-      <img src="{{image.post.url}}" class="column" alt="Image">
-      <p class="column">{{ image.images_description }}</p>
-      <p class="column">{{ image.images_category }}</p>
-      <p class="column">{{ image.images_location }}</p>
+    {% for image in gallery %}
+    <div class="col-md-3 container">
+      <a href="{% url 'images' %}" data-toggle="modal" data-target="#{{post.id}}">
+        <img style="height:250px; width:400px; border-radius:5px; margin-left:15px; margin-right: 15px; margin-bottom: 30px"
+          src="{{image.post.url}}" class="img-rounded" alt="Image" data-toggle="modal"><br>
+      </a>
+
+
     </div>
+    {% empty %}
+    <h3 class="text-center">There are No Images</h3>
+    {% endfor %}
   </div>
-
-  {% empty %}
-  <div class="row">
-    <h2 class="text-center">There No News Items</h2>
-  </div>
-  {% endfor %}
-
 </div>
-
-{% endblock %}
+{% endblock%}

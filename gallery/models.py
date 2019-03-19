@@ -36,9 +36,10 @@ class Images(models.Model):
             return Images.objects.get(id=1) 
     
     @classmethod
-    def search_by_images_name(cls,search_term):
-        gallery = cls.objects.filter(images_name__icontains=search_term)
-        return gallery
+    def search_by_category(cls,search_term):
+        image_category=Category.objects.filter(name__icontains=search_term)
+        images = cls.objects.filter(image_category=image_category)
+        return images         
 
     class Meta:
         ordering = ['images_name']
