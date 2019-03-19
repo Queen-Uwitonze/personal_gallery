@@ -1,21 +1,28 @@
 {%extends 'all_gallery/base.html'%}
 
 {% block content %}
-{{block.super}}
+{{ block.super}}
 
 <div class="container">
 
-  <!-- Looping through images   -->
-  {% for news_item in gallery %}
+  <!-- Looping through news   -->
+  {% for image in gallery %}
 
   <div class="row">
+    <div class="col-md-2"></div>
     <!-- displaying News articles -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <h2 class="text-center"> {{ news_item.title }} </h2>
+    <div class="col-xs-6 col-sm-6 col-md-8 col-lg-6">
+      <h2 class="text-center"> {{ image.images_name }} </h2>
+      <img src="{{ image.post.url }}" class="text-center" alt="flowers">
+      <p class="text-center">{{ image.images_description }}</p>
+      <p class="text-center">{{ image.images_category }}</p>
+      <p class="text-center">{{ image.images_location }}</p>
+      <!-- </div> -->
+      <div class="col-md-2"></div>
     </div>
 
-  </div>
 
+  </div>
   {% empty %}
   <div class="row">
     <h2 class="text-center">There No News Items</h2>
@@ -23,4 +30,5 @@
   {% endfor %}
 
 </div>
+
 {% endblock %}

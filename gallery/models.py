@@ -27,6 +27,14 @@ class Images(models.Model):
     def save_images(self):
         self.save()
 
+    @classmethod
+    def get_images(cls,id):
+        try:
+            post=Images.objects.get(id=id)
+            return post
+        except DoesNotExist:
+            return Images.objects.get(id=1) 
+
     class Meta:
         ordering = ['images_name']
 

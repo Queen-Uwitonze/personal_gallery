@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http  import Http404
 import datetime as dt
-
+from .models import Images,Category,Location
 
 # Create your views here.
 def welcome(request):
@@ -20,10 +20,11 @@ def convert_dates(dates):
     return day
 
 def images_of_day(request):
+    gallery = Images.objects.all()
     date = dt.date.today()
     # FUNCTION TO CONVERT DATE OBJECT TO FIND EXACT DAY
     day = convert_dates(date)
-    return render(request, 'all_gallery/today-images.html', {"date": date})
+    return render(request, 'all_gallery/today-images.html',{'gallery':gallery}, {"date": date})
 
 def past_days_images(request, past_date):
 
