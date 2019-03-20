@@ -26,39 +26,22 @@ def images_of_day(request):
     day = convert_dates(date)
     return render(request, 'all_gallery/today-images.html',{'gallery':gallery}, {"date": date})
 
-def past_days_images(request, past_date):
-
-    try:
-        # Converts data from the string Url
-        date = dt.datetime.strptime(past_date, '%Y-%m-%d').date()
-
-    except ValueError:
-        # Raise 404 error when ValueError is thrown
-        raise Http404()
-        assert False
-
-    if date == dt.date.today():
-        return redirect(images_of_day)
-
-    return render(request, 'all_gallery/past-images.html', {"date": date})
 
 def search_results(request):
 
     if 'images' in request.GET and request.GET["images"]:
         search_term = request.GET.get("images")
-        searched_images = Images.search_by_images_name(search_term)
+        searched_categories = Images.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all_gallery/search.html',{"message":message,"images": searched_images})
+        return render(request, 'all_gallery/search.html',{"message":message,"images": searched_categories})
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'all_gallery/search.html',{"message":message})
+        return render(request, 'all_gallery/search.html',{"message":message})     
 
    
-def get_images(request,post_id):
-    try:
-      post = Images.objects.get(id = post.id)
-    except DoesNotExist:
-        raise Http404()
-    return render(request,"all_gallery/single_image.html", {"post":post})
+def single_images(request,image_id):
+    images = Images.objects.get(id=image_id)
+    return render(request,"all_gallery/single_image.html", {"images":images})
+

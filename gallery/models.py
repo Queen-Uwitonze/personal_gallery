@@ -16,9 +16,9 @@ class Location(models.Model):
 
 class Images(models.Model):
     post =models.ImageField(upload_to='gallery/')
-    images_name = models.CharField(max_length =60)
+    images_name = models.CharField(max_length =30)
     images_description = models.CharField(max_length =60)
-    images_category = models.ForeignKey(Category,null=True)
+    images_category = models.ForeignKey(Category)
     images_location = models.ForeignKey(Location)
     
     def __str__(self):
@@ -28,18 +28,20 @@ class Images(models.Model):
         self.save()
 
     @classmethod
-    def get_images(cls,id):
-        try:
-            post=Images.objects.get(id=id)
-            return post
-        except DoesNotExist:
-            return Images.objects.get(id=1) 
-    
+    def get_images(cls,post_id):
+        images = Images.objects.get(id=post_id)
+        return images     
+
+    @classmethod
+    def get_all_images(cls):
+            images = Images.objects.all()
+            return images 
+
     @classmethod
     def search_by_category(cls,search_term):
-        image_category=Category.objects.filter(name__icontains=search_term)
-        images = cls.objects.filter(image_category=image_category)
-        return images         
+        images_category=Category.objects.get(name__icontains=search_term)
+        images = Images.objects.get(image_category=image_category)
+        return images       
 
     class Meta:
         ordering = ['images_name']

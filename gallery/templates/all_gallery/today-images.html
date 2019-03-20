@@ -9,12 +9,10 @@
   <div class="row">
     {% for image in gallery %}
     <div class="col-md-3 container">
-      <a href="{% url 'images' %}" data-toggle="modal" data-target="#{{post.id}}">
+      <a href="image/{{image.id}}" href="single_image.html">
         <img style="height:250px; width:400px; border-radius:5px; margin-left:15px; margin-right: 15px; margin-bottom: 30px"
           src="{{image.post.url}}" class="img-rounded" alt="Image" data-toggle="modal"><br>
       </a>
-
-
     </div>
     {% empty %}
     <h3 class="text-center">There are No Images</h3>
