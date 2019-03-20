@@ -37,6 +37,9 @@ class Images(models.Model):
             images = Images.objects.all()
             return images 
 
+    def delete_images(self):
+      self.remove()
+
     @classmethod
     def search_by_category(cls,search_term):
         images_category=Category.objects.get(name__icontains=search_term)
