@@ -13,7 +13,12 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="{% url 'galleryToday' %}">PHOTO APP</a>
       </div>
-
+      <div>
+        <form class="form-inline nav navbar-nav navbar-right" role="search" style="margin-top:20px;" action="{% url ' location' %}">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search Category" aria-label="Search" name=" location">
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        </form>
+      </div>
       <!-- Adding a search form  -->
       <div class="col-sm-4 col-md-4 navbar-right">
 
