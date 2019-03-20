@@ -36,8 +36,8 @@ class Images(models.Model):
     
     @classmethod
     def search_by_category(cls,search_term):
-        images_category=Category.objects.get(name__icontains=search_term)
-        images = Images.objects.get(images_category=images_category)
+        images=cls.objects.filter(images_category__name__icontains=search_term)
+    
         return images       
     
     def save_images(self):

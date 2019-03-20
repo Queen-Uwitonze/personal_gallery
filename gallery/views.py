@@ -31,10 +31,10 @@ def search_results(request):
 
     if 'category' in request.GET and request.GET["category"]:
         search_term = request.GET.get("category")
-        searched_categories = Images.search_by_category(search_term)
+        categories = Images.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all-photos/search.html',{"message":message,"categories": searched_categories})
+        return render(request, 'all_gallery/search.html',{"message":message,"categories": categories})
 
     else:
         message = "You haven't searched for any term"
