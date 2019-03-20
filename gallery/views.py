@@ -44,3 +44,11 @@ def single_images(request,image_id):
     images = Images.objects.get(id=image_id)
     return render(request,"all_gallery/single_image.html", {"images":images})
 
+def location(request,location_id):
+    try:
+        locations = Location.objects.all()
+        location = Location.objects.get(id = location_id)
+        images = Image.objects.filter(image_location = location.id)
+    except:
+        raise Http404()
+    return render(request,'location.html',{'location':location,'images':images,'locations':locations})
