@@ -7,7 +7,7 @@ urlpatterns=[
    
     url('^$',views.images_of_day,name='galleryToday'),
     url(r'^search/', views.search_results,name='search_results'),
-    url(r'^place/', views.location,name='locations'),
+    url(r'^place/', views.filter_by_location,name='locations'),
     url(r'^image/(\d+)',views.single_images,name ='images')
 ]
 

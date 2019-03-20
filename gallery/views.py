@@ -41,14 +41,14 @@ def search_results(request):
         return render(request, 'all_gallery/search.html',{"message":message})      
    
 def single_images(request,image_id):
-    images = Images.objects.get(id=image_id)
+    images = Images.objects.filter_by_location(id=image_id)
     return render(request,"all_gallery/single_image.html", {"images":images})
 
-def location(request,location_id):
+def filter_by_location(request,location_id):
     try:
-        locations = Location.objects.all()
-        location = Location.objects.get(id = location_id)
-        images = Images.objects.filter(image_location = location.id)
+        
+        locations = Images.objects.get(id = location_id)
+        # images = Images.objects.filter(image_location = locations.id)
     except:
         raise Http404()
-    return render(request,'location.html',{'location':location,'images':images,'locations':locations})
+    return render(request,'location.html',{'locations':locations,'images':images})

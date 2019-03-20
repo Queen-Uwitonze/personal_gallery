@@ -38,6 +38,12 @@ class Images(models.Model):
     def search_by_category(cls,search_term):
         images=cls.objects.filter(images_category__name__icontains=search_term)
     
+        return images  
+
+    @classmethod
+    def filter_by_location(cls,search_term):
+        images=cls.objects.filter(images_location__name__icontains=search_term)
+    
         return images       
     
     def save_images(self):
@@ -55,7 +61,8 @@ class Images(models.Model):
     def search_results(images):
       pass
     
-
+    def filter_by_location(location_id):
+      pass
     class Meta:
         ordering = ['images_name']
 
