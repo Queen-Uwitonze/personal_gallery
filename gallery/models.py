@@ -61,7 +61,7 @@ class Images(models.Model):
     def search_results(images):
       pass
     
-    def filter_by_location(location_id):
+    def filter_by_location(request,location_id):
       pass
     class Meta:
         ordering = ['images_name']

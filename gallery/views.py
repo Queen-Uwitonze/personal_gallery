@@ -44,7 +44,7 @@ def single_images(request,image_id):
     images = Images.objects.filter_by_location(id=image_id)
     return render(request,"all_gallery/single_image.html", {"images":images})
 
-def filter_by_location(request,location_id):
+def location(request,location_id):
     try:
         
         locations = Images.objects.get(id = location_id)
