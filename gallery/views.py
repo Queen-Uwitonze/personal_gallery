@@ -29,17 +29,16 @@ def images_of_day(request):
 
 def search_results(request):
 
-    if 'images' in request.GET and request.GET["images"]:
-        search_term = request.GET.get("images")
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
         searched_categories = Images.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all_gallery/search.html',{"message":message,"images": searched_categories})
+        return render(request, 'all-photos/search.html',{"message":message,"categories": searched_categories})
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'all_gallery/search.html',{"message":message})     
-
+        return render(request, 'all_gallery/search.html',{"message":message})      
    
 def single_images(request,image_id):
     images = Images.objects.get(id=image_id)
