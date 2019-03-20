@@ -45,11 +45,13 @@ class Images(models.Model):
     
     def get_image_by_id(id):
       pass
-      
+     
+    def search_results(images_category):
+      pass
     @classmethod
     def search_by_category(cls,search_term):
         images_category=Category.objects.get(name__icontains=search_term)
-        images = Images.objects.get(image_category=image_category)
+        images = Images.objects.get(images_category=images_category)
         return images       
 
     class Meta:
