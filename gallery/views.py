@@ -48,7 +48,7 @@ def location(request,location_id):
     try:
         locations = Location.objects.all()
         location = Location.objects.get(id = location_id)
-        images = Image.objects.filter(image_location = location.id)
+        images = Images.objects.filter(image_location = location.id)
     except:
         raise Http404()
     return render(request,'location.html',{'location':location,'images':images,'locations':locations})
