@@ -42,7 +42,10 @@ class Images(models.Model):
     
     def update_images(self):
       self.remove()
-
+    
+    def get_image_by_id(id):
+      pass
+      
     @classmethod
     def search_by_category(cls,search_term):
         images_category=Category.objects.get(name__icontains=search_term)
