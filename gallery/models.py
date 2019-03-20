@@ -39,6 +39,9 @@ class Images(models.Model):
 
     def delete_images(self):
       self.remove()
+    
+    def update_images(self):
+      self.remove()
 
     @classmethod
     def search_by_category(cls,search_term):
